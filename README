@@ -1,0 +1,20 @@
+
+environment setup:
+
+recommend developing on linux,
+install a minimal server with the basic utilities and ssh
+
+then install lxde and xinit
+$ startx
+to activate the GUI
+
+install necessary python packages to dev Algo Trading.
+
+
+log: 
+
+
+finally install the talib 
+have the dev env set  up
+
+initial a git reporsitory to work anywhere
