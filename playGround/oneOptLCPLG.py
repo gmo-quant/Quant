@@ -13,34 +13,30 @@ def generatePLSeries(strike, currentPrice, initPremium):
 	
 	return plSeries
 
-def plotOneLCPLG(plSeries):
+def organizeData(price, plSeries):
+	df = pd.DataFrame([price, plSeries]);
+	data = df.transpose()
+	data.columns = ['Price', 'PL']
+	return data
+
+def plotOneLCPLG(data):
 	
-	plt.figure(figsize=(16, 10))
+	fig = plt.figure(figsize=(16, 10))
+	ax = fig.add_subplot(1,1,1)
+	ax.spines['bottom'].set_position('zero')
 	plt.title('PLG for one option long call strategy')
 	plt.ylabel("Profit/Loss")
 	plt.xlabel("stock price @ expiration")
-	plSeries.xhline(y=0, color='g', linestyle='-')
-	plSeries.plot()
+	plt.plot(data.Price, data.PL)
 	plt.show()
 
-msft = pd.read_csv("../data/msft_2000_2017.csv", index_col=0, parse_dates=True)
-price = msft.Close['2002-02':'2002-03']
-plSeries = price.copy()
 initPremium = 2
 strike = 31
-instrinsicVal = plSeries - strike
-zeroInstrinsic = instrinsicVal < 0
-instrinsicVal[zeroInstrinsic] = -initPremium 
+msft = pd.read_csv("../data/msft_2000_2017.csv", index_col=0, parse_dates=True)
 
+#price = msft.Close['2009-02':'2017-03']
+price = pd.Series([110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95])
 
-
-#price = [110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95]
-'''
-priceSerise = pd.Series(price)
-priceSerise -= 100
-priceSerise[priceSerise < 0] = -5 
-#plotOneLCPLG(instrinsicVal)
-plotOneLCPLG(priceSerise)
-'''
-
-plotOneLCPLG(instrinsicVal)
+plSeries = generatePLSeries(100, price,5)
+data = organizeData(price, plSeries);
+plotOneLCPLG(data);
