@@ -27,16 +27,17 @@ def plotOneLCPLG(data):
 	plt.title('PLG for one option long call strategy')
 	plt.ylabel("Profit/Loss")
 	plt.xlabel("stock price @ expiration")
+	plt.legend()
 	plt.plot(data.Price, data.PL)
 	plt.show()
 
-initPremium = 2
-strike = 31
+initPremium = 5
+strike = 100
 msft = pd.read_csv("../data/msft_2000_2017.csv", index_col=0, parse_dates=True)
 
 #price = msft.Close['2009-02':'2017-03']
 price = pd.Series([110, 109, 108, 107, 106, 105, 104, 103, 102, 101, 100, 99, 98, 97, 96, 95])
 
-plSeries = generatePLSeries(100, price,5)
+plSeries = generatePLSeries(strike, price,initPremium)
 data = organizeData(price, plSeries);
 plotOneLCPLG(data);
