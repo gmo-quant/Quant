@@ -4,7 +4,7 @@
 #include<string>
 #include<iostream>
 
-using namespace std
+using namespace std;
 
 class Person{
 public:
@@ -13,7 +13,7 @@ public:
 	void print() const;
 private:
 	string name;
-	int age;
+	int iage;
 	
 };
 

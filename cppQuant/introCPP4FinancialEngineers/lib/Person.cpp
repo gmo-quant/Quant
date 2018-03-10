@@ -1,14 +1,14 @@
 #include"Person.hpp"
 
 Person::Person(const string& name, const int& age){
-	this.name = name;
-	this.age = age;
+	this->name = name;
+	this->iage = age;
 }
 
 int Person::age() const{
-	return age;
+	return iage;
 }
 
 void Person::print() const{
-	cout << name << " " << age << endl;
+	cout << name << " " << iage << endl;
 }
