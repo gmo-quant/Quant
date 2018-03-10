@@ -4,6 +4,7 @@ DEP=../lib/sum.cpp ../lib/sum.hpp
 GDEP= ../lib/Gsum.cpp ../lib/Gsum.hpp
 IDEP= ../lib/Inequalities.cpp ../lib/Inequalities.hpp
 PersonDEP = ../lib/Person.cpp ../lib/Person.hpp
+EODEP=../lib/EuropeanOption.cpp ../lib/EuropeanOption.hpp
 
 Person:
 	$(CC) $(CFLAG) PersonTester.cpp $(PersonDEP) -o PersonTester

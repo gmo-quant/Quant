@@ -15,19 +15,20 @@
  *
  * =====================================================================================
  */
+#include<string>
 
 class EuropeanOption{
 public:
 	// Constructor
 	EuropeanOption();
-	EuropeanOption(const EuropeanOption& option2);
-	EuropeanOption(const string& optionType);
+	EuropeanOption(const EuropeanOption & option2);
+	EuropeanOption(const std::string & optionType);
 		
 	// Destructor
 	virtual ~EuropeanOption();
 	
 	// assginment operator
-	EuropeanOption& operator = (const EuropeanOption& option2);
+	EuropeanOption& operator = (const EuropeanOption & option2);
 
 	// Functions that calculate option price and (some ) sensitivities
 	double Price() const;
@@ -38,7 +39,7 @@ public:
 
 private:
 	void init(); // initialise all default values
-	void copy(const EuropeanOption& option2);
+	void copy(const EuropeanOption & option2);
 	
 	// "kernel" function for option calculations
 	double CallPrice() const;
@@ -48,12 +49,12 @@ private:
 
 private:
 	double interestRate;
-	double volability;
+	double sig; //volability
 	double strike;
 	double expiration;
 	double cur_underlying_price; 
 	double cost_of_carry; 
 
-	string optType; // option name (call, put)
+	std::string optType; // option name (call, put)
 	
 };
