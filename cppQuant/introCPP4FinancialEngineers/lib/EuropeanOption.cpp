@@ -32,7 +32,7 @@ EuropeanOption::EuropeanOption(const std::string & optionType){
 	init();
 	optType = optionType;
 	if ( optionType == "c"){
-		optType = "C"
+		optType = "C";
 	}
 }
 
@@ -78,10 +78,13 @@ void EuropeanOption::copy(const EuropeanOption & option2){
 }
 
 double EuropeanOption::CallPrice() const{
+	// missing definition of N, 
+	// delete N first, make it complierable
 	double tmp = sig * sqrt(expiration);
 	double d1 = (log(cur_underlying_price/strike) 
 		+ (cost_of_carry + (sig * sig) * 0.5 ) * expiration ) /tmp;
 	double d2 = d1 - tmp;
-	return (cur_underlying_price * exp((b-r) * strike) * N(d1))
-		- (strike * exp(-interestRate * expiration) * N(d2)) ;
+//	return (cur_underlying_price * exp((cost_of_carry - interestRate) * strike) * N(d1))
+//		- (strike * exp(-interestRate * expiration) * N(d2)) ;
+	return 0.0;
 }
