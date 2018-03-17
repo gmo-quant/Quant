@@ -7,8 +7,8 @@ int main(){
 	double d3 = 0;
 	cin >> d1;
 	cin >> d2;
-	cout << Max<double>(d1, d2) << endl;
+	cout << minmax::max<double>(d1, d2) << endl;
 	cin >> d3;
-	cout << Min<double>(d1, d2, d3) << endl;
+	cout << minmax::min<double>(d1, d2, d3) << endl;
 
 }
