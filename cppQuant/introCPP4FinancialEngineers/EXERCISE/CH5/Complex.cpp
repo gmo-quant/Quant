@@ -17,6 +17,8 @@ Complex::Complex(const double real, const double imag){
 	i = imag;
 }
 
+Complex::~Complex(){}
+
 double Complex::real() const{
 	return r;
 }
@@ -36,7 +38,7 @@ double imag(const Complex& c){
 }
 
 double rad(const Complex& c){
-	return ::sqrt( (c.real() * c.real()) + ( c.imag() * c.imag() ));
+	return ::sqrt( (c.r * c.r) + ( c.imag() * c.imag() ));
 }
 
 
@@ -77,6 +79,13 @@ Complex& Complex::operator += (const Complex& c){
 Complex& Complex::operator -= (const Complex& c){
 	r -= c.real();
 	i -= c.imag();
+	return *this;
+}
+
+Complex& Complex::operator *= (const Complex& c)
+{
+	Complex tmp = (*this) * c;
+	*this = tmp;
 	return *this;
 }
 
@@ -131,13 +140,111 @@ Complex Complex::operator / (const double d) 	const{}
 Complex operator / (const Complex& c, const double d){}
 Complex operator / (const double d, const Complex& c){}
 
-Complex::~Complex(){}
+// Other functions
+Complex conjugate(const Complex& z)
+{ // The complex conjugate of a complex number
+
+	return Complex(z.real(), -z.imag());
+}
+
+Complex inverse(const Complex& z)
+{ // The multiplicative inverse of the complex number
+	// X + iY --> 1.0 /(X + iY)
+
+	return Complex(1.0,0.0) / z;
+}
+
+
+// Complex trigonometric functions
+Complex exp(const Complex& c)
+{ // Exponential function
+
+	double ex = exp(c.real());
+	return Complex(ex * cos(c.imag()), ex * sin(c.imag()));
+}
+
+
+Complex cos(const Complex& z)
+{ // Cosine function
+
+	Complex term1 = exp(mpi(z));
+	Complex term2 = exp(- mpi(z));
+
+	Complex result = 0.5 * (term1 + term2);
+
+	return result;
+}
+
+Complex sin(const Complex& z)
+{ // Sine function
+
+	Complex term1 = exp(mpi(z));
+	Complex term2 = exp(- mpi(z));
+
+	Complex result = - 0.5 * mpi(term1 - term2);
+
+	return result;
+}
+
+Complex cosh(const Complex& z)
+{ // Hyperbolic cosine function
+
+	return (exp(z)  + exp(- (z))) * 0.5;
+
+}
+
+Complex sinh(const Complex& z)
+{ // Hyperbolic sine function
+
+	return (exp(z) - exp(- (z))) * 0.5;
+
+}
+
+Complex tanh(const Complex& z)
+{ // Hyperbolc tangent
+
+	return sinh(z) / cosh(z);
+}
+
+Complex sech(const Complex& z)
+{ // Hyperbolc cotangent
+
+	return Complex (2.0, 0.0)/(exp(z) + exp(-z));
+
+}
+
+Complex csch(const Complex& z)
+{ // Hyperbolc cosech
+
+	return Complex (2.0, 0.0)/(exp(z) - exp(-z));
+
+}
+
+Complex coth(const Complex& z)
+{ // Hyperbolc cotangent
+
+	return cosh(z) / sinh(z);
+
+}
+
+
+Complex tan(const Complex& c)
+{ // The tangent function
+
+	return sin(c) / cos(c);
+}
+
+Complex cgt(const Complex& c)
+{ // The cotangent function
+
+	return cos(c) / sin(c);
+}
+
+std::ostream& operator << (std::ostream& os, const Complex& c){
+	os << "[" << c.real() << ", " << c.imag() << "]\n" ;
+	return os;
+}
 
 Complex mpi(const Complex& z){
 	return Complex(-z.imag(), z.real());
-}
-
-std::ostream& operator << (std::ostream& os, Complex& c){
-	os << "[" << c.real() << ", " << c.imag() << "]\n" ;
-	return os;
 }

@@ -28,7 +28,7 @@ int main(){
 	cout << c4 << endl;
 	cout << c3 << endl;
 
-	c3 = 4.6 - c3 - 4.0;
+	// c3 = 4.6 - c3 - 4.0;
 	cout << c4 << endl;
 	cout << c3 << endl;
 }
