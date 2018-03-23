@@ -1,0 +1,176 @@
+option pricing refers to the amount per share at which an option is traded.
+
+
+basic terms
+{
+	covered call
+	an option in which the writer of a call option holds a long position in the underlying security on a share-for-share basis.
+
+	* covered put
+	an option in which the writer of a put option holds a short position in the underlying security on a share-for-share basis.
+
+	covered writer
+	an option seller who owns the option's underlying security as a hedge against the option.
+
+	early exercise
+	the exercise of an option before its expiration date. 
+
+	holder
+	an investor whol buys an option and makes a premium payment to the writer.
+
+	LEAP(Long-term Equity Anticipation Securities)
+	LEAPs are publicly traded options that have expiration dates longer than one year.
+
+	Listed Option
+	A put or call option that is traded on an options exchange.
+	the terms of the option, including strike price and expiration date, are standardized by the exchange.
+
+	Naked Option
+	an option position in which the writer of the option does not have an offsetting position in the underlying security, thereby having no protection against adverse prices moves.
+
+	Over-the-Counter
+	an option that is not traded over an exchange. an Over-the-Counter option has no standardization of strike prices and expiration dates.
+}
+
+basics of Pricing
+{
+	the price, or cost, of an option  is an amount of money known as the premium.
+	in general, the option's premium is its intrinsic value combined with its time value
+	it is usually combined with instrinsic value and time value of an option.
+
+	premiums are priced per share. 
+	an option premium is its cost - how much the particular option is worth to the buyer and seller.
+	option traders use mathematical models to help determine what an option should be worth.
+
+	an option premium = intrinsic value of the option  + time value of the option
+
+	intrinsic value is the difference between the underlying's price and the strike price - 
+	or 
+	the in-the-money portion of the option's premium.
+
+	intrinsic value(Call) = Underlying Price - Strike price
+	intrinsic value(Put) = strike price - underlying price.
+
+	by definition, the only options that have intrinsic value are those that are in-the-money. 
+	
+
+	any premium that is in excess of the option's intrinsic value is referred to as its time value. 
+
+
+	in general, the more time to expiration, the greater the time value of the option.
+	it represents the amount of time the option position has to become profitable due to a favorable move in the underlying price.
+
+	in most cases, investors are willing to pay a higher premium for more time(assuming the different options have the same exercise price), since time increases the likelihood that the position will become profitable. Time value decreases over time and decays to zero at expriation. this phenomenon is known as time decay.
+
+	it means the longer from expriation, the larger the time value, 
+}
+
+factors that influence options pricing
+{
+	six primary factors influence options pricing:
+	{
+		intrinsic value determined by
+		{ 
+			1. the underlying price,	
+				the most influential factor on an option premium is the current market price of the underlying asset.
+
+				in general, as the price of the underlying asset increases, call price increase and put prices decrease.  
+
+			2. strike price 
+				the strike price determines if the option has any intrinsic value. 
+
+				the premium increases as the option becomes further in-the-money(where the strike price becomes more favorable in relation to the current underlying price.) 
+				the premium decrease as the option becomes more out-of-the-money(when the strike price is less favorable in relation to the underlying security.)
+
+				premiums increase as options become further in-the-money.
+		}
+		probability of a profitable move determined by
+		{
+			3. time until expiration,
+				the longer an option has until expiration, the greater the chance it will end up in-the-money 
+				as expiration approaches, the option's time value decreases. 
+				as a general rule, an option loses one-third of its time value during the first half of its life. and two-thirds of its value during second half. 
+
+				the underlying asset's volatility is a factor in time value: 
+					if the underlying is highly volatilite, you can reasonably expect a greater degree of price movement before expiration.
+
+					if the underlying is lowly volatilite, the time value will be lower if the underlying price is not expected to move much.
+
+					the longer the time until expiration, the higher the option price.
+					the shorter the time until expiration, the lower the option price.
+
+			4. expected volatility,
+				volatility is the degree to which price moves,whether it goes up or down.
+				it is a measure of the speed and magnitude of the underlying's price changes. 
+
+				historical volatility refers to the actual price changes that have been observed over a specified time period. 
+
+				options traders can evaluate historical volatility to determine possible volatility in the future. 
+
+				implied volatility, on the other hand, is a forecast of future volatility and acts as an indicator of the current market sentiment. 
+
+				while implied volatility can be difficult to quantify, option premiums are generally higher if the underlying exhibits higher volatility because it will have higher expected price fluctuations.
+
+				the greater the expected volatility, the higher the option value.
+		}
+		cost of money determined by
+		{
+			5. interest rates,
+				interest rates and dividends have small, but measurable, effects on option prices.
+
+				in general, 
+				as interest rates rise, call premiums increase and put premiums decrease. 
+
+				because of the costs associated with owning the underlying: the purchase incurs either interest expense(if the money is borrowed) or lost interst income(if existing funds are used to purchase the shares), in either case, the buyer will have interest costs.
+		}
+		share price adjustment determined by
+		{
+			6. dividends	
+				dividends can affect option prices because the underlying stock's price typically drops by the amount of any cash dividend on the ex-dividend date. 
+
+				as a result, 
+				if the underlying's dividend increases, call prices will decrease adn put prices will increase. 	
+		}
+
+	}
+}
+
+distinguishing between option premiums and theoretical values
+{
+	the theoretical value (or fair value) of an option, on the other hand, is the estimated value of an option derived from a mathematical model. 
+
+	it's what an option should currently be worth using all the known inputs, such as the underlying price, strike price and days until expiration. 
+
+	these factors often change during an option's lifetime, and some fluctuate in value on a continuing basis throughout any trading session.
+
+	a pricing mode creates the theoretical values
+	specific values for each factor can be used to predict an option contract's theoretical value at a given point in the future. 
+
+	when options are first listed on a stock, for example, the market makers don't know what sort of implied volatility to use, so they make educated guesses(theoretical values). the implied volatility  then changes based upon the supply and demand for the options.
+}
+
+options pricing modeling
+{
+	variables fluctuate over the life of the option, and the option's theoretical value adapts to reflect these changes. 
+
+	use the theoretical value updates to monitor the changing risk and value of the option positions, and assist with trading decisions. 
+}
+
+
+Put/Call Parity
+{
+	
+}
+
+option pricing models that are used to determine the theroretical value of options
+{
+	
+}
+
+
+binomial options pricing model
+{
+	the binomial model can calculate what the price of the call option should be today.	
+}
+
+
