@@ -1,21 +1,28 @@
 CC=g++
 CFLAG=-I ../lib/
-DEP=../lib/sum.cpp ../lib/sum.hpp
-GDEP= ../lib/Gsum.cpp ../lib/Gsum.hpp
-IDEP= ../lib/Inequalities.cpp ../lib/Inequalities.hpp
-PersonDEP = ../lib/Person.cpp ../lib/Person.hpp
-EODEP=../lib/EuropeanOption.cpp ../lib/EuropeanOption.hpp
+DEP=../lib/sum.cpp 
+GDEP= ../lib/Gsum.cpp 
+IDEP= ../lib/Inequalities.cpp 
+PersonDEP = ../lib/Person.cpp 
+EODEP=../lib/EuropeanOption.cpp 
+
+EuropeanOption:
+	$(CC) $(CFLAG) -o EuropeanOptionTester EuropeanOptionTester.cpp  $(EODEP) 
 
 Person:
-	$(CC) $(CFLAG) PersonTester.cpp $(PersonDEP) -o PersonTester
+	$(CC) $(CFLAG) -o PersonTester PersonTester.cpp $(PersonDEP)
 
 sumTester:
-	$(CC) $(CFLAG) sumTester.cpp $(DEP) -o sumTester
+	$(CC) $(CFLAG) -o sumTester sumTester.cpp $(DEP)
 
 
 GsumTester:
-	$(CC) $(CFLAG) GsumTester.cpp $(GDEP) -o GsumTester
+	$(CC) $(CFLAG) -o GumsTester GsumTester.cpp $(GDEP)
 
 
 InequalitiesTester:
 	$(CC) $(CFLAG) InequalitiesTester.cpp $(IDEP) -o InequalitiesTester
+
+
+clean:
+	rm *.o

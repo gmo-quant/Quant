@@ -16,13 +16,13 @@
  * =====================================================================================
  */
 #include<string>
-
+using namespace std;
 class EuropeanOption{
 public:
 	// Constructor
 	EuropeanOption();
 	EuropeanOption(const EuropeanOption & option2);
-	EuropeanOption(const std::string & optionType);
+	EuropeanOption(const string & optionType);
 		
 	// Destructor
 	virtual ~EuropeanOption();
@@ -38,6 +38,10 @@ public:
 	void toggle(); // change option type (CALL / PUT, PUT/ CALL) 
 
 private:
+	// Gaussian functions
+	double n(double x) const;
+	double N(double x) const;
+private:
 	void init(); // initialise all default values
 	void copy(const EuropeanOption & option2);
 	
@@ -46,6 +50,8 @@ private:
 	double PutPrice() const;
 	double CallDelta() const;
 	double PutDelta() const;
+
+
 
 private:
 	double interestRate;

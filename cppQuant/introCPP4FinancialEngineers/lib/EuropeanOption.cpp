@@ -51,7 +51,30 @@ EuropeanOption&  EuropeanOption::operator = (const EuropeanOption & option2){
 }
 
 double EuropeanOption::Price() const{
+	return 0.0;
+}
 
+double EuropeanOption::Delta() const{
+	return 0.0;
+}
+
+double EuropeanOption::n(double x) const{
+	double A = 1.0/ sqrt(2.0 * 3.1415);
+	return A * exp(-x * x * 0.5);
+}
+
+double EuropeanOption::N(double x) const{
+	double a1 = 0.4361836;
+	double a2 = -0.1201676;
+	double a3 = 0.9372980;
+
+	double k = 1.0 / (1.0 + (0.33267 * x) );
+
+	if( x >= 0.0 ){
+		return 1.0 - n(x) * ( a1*k + (a2*k*k) + (a3*k*k*k));
+	}else{
+		return 1.0 - N(-x);
+	}
 }
 
 void EuropeanOption::init(){
@@ -78,13 +101,20 @@ void EuropeanOption::copy(const EuropeanOption & option2){
 }
 
 double EuropeanOption::CallPrice() const{
-	// missing definition of N, 
-	// delete N first, make it complierable
 	double tmp = sig * sqrt(expiration);
 	double d1 = (log(cur_underlying_price/strike) 
 		+ (cost_of_carry + (sig * sig) * 0.5 ) * expiration ) /tmp;
 	double d2 = d1 - tmp;
-//	return (cur_underlying_price * exp((cost_of_carry - interestRate) * strike) * N(d1))
-//		- (strike * exp(-interestRate * expiration) * N(d2)) ;
-	return 0.0;
+	return (cur_underlying_price * exp((cost_of_carry - interestRate) * strike) * N(d1))
+		- (strike * exp(-interestRate * expiration) * N(d2)) ;
+}
+
+
+double EuropeanOption::PutPrice() const{
+	double tmp = sig * sqrt(expiration);
+	double d1 = ( log(cur_underlying_price) + ( cost_of_carry + (sig * sig) * 0.5 ) * expiration )/tmp;
+	double d2 = d1 - tmp;
+	
+	return ( strike * exp( -interestRate * expiration) * N(-d2) ) 
+		- (cur_underlying_price * exp( (cost_of_carry - interestRate) * expiration ) * N(-d1);
 }
